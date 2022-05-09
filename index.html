@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.Js con API</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <div id="app" class="container">
+            <menu-component @response="(msg) => childMsg = msg"></menu-component>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <h5 class="text-center">ELECTRONIC SHOP</h5>
+        </div>    
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID_CATEGORY</th>
+                <th scope="col">ID_PARENT</th>
+                <th scope="col">ID_SHOP_DEFAULT</th>
+                <th scope="col">LEVEL DEPTH</th>
+                <th scope="col">ACTIVE </th>
+                <th scope="col">DATE_ADD</th>
+                <th scope="col">DATE_UPD</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr v-for="category of category">
+                    <th scope="row">{{category.id_category}}</th>
+                    <td>{{category.id_category}}</td>
+                    <td>{{category.id_parent}}</td>
+                    <td>{{category.id_shop_default}}</td>
+                    <td>{{category.level_depth}}</td>
+                    <td>{{category.active}}</td>
+                    <td>{{category.date_add}}</td>
+                    <td>{{category.date_upd}}</td>
+                    
+                    
+                    <td>
+                        <button class="btn btn-danger" @click="DeleteCategory(category.id_category)">Eliminar</button>&nbsp;
+                        <button class="btn btn-primary" @click="CategoryData(category.id_category)">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-sm-12">
+                <h5 class="text-center">Total categories {{ totalCategories }}</h5>
+            </div>
+        </div>
+
+
+
+
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="menu.component.js"></script>
+        <script src="appCategory.js"></script>
+        <script>
+            const mountedApp = app.mount('#app');
+        </script>
+    </body>
+</html>
